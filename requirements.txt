@@ -1,0 +1,25 @@
+# DeepShieldAI - Enterprise AI-Powered Image & Video Deepfake Forensics
+# Core Deep Learning and Scientific Computing Stack
+tensorflow>=2.16.0
+keras>=3.0.0
+numpy>=1.26.0
+pandas>=2.0.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+scikit-learn>=1.4.0
+pillow>=10.0.0
+
+# Computer Vision & Video Processing
+opencv-python>=4.9.0
+
+# Dataset Acquisition & Utilities
+kagglehub>=0.2.0
+
+# Web Application UI (Image Forensics)
+streamlit>=1.35.0
+
+# Interactive Notebook Environment
+jupyterlab>=4.0.0
+notebook>=7.0.0
+ipykernel>=6.29.0
+nbconvert>=7.0.0

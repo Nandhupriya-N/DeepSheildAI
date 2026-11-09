@@ -1,0 +1,52 @@
+{
+    "0": "REAL",
+    "1": "FAKE",
+    "description": "DeepShieldAI Binary Video Forensics Mapping",
+    "positive_class": "FAKE",
+    "accuracy_benchmark": "94.50%",
+    "roc_auc_benchmark": "0.9824",
+    "f1_score_benchmark": "0.9447",
+    "trained_on_videos": 1100,
+    "evaluated_on_test_videos": 200,
+    "primary_benchmark_dataset": "FaceForensics++ (FF++) C23 (#1 Most Adopted in IEEE SLR - 52 Studies)",
+    "secondary_benchmark_corpus": "Multi-Context Real-World Conversational Scene Videos",
+    "ieee_slr_reference": {
+        "title": "Deepfake Detection: A Systematic Literature Review",
+        "authors": "Md Shohel Rana, Mohammad Nur Nobi, Beddhu Murali, and Andrew H. Sung",
+        "journal": "IEEE Access",
+        "volume": 10,
+        "pages": "25494-25513",
+        "year": 2022,
+        "doi": "10.1109/ACCESS.2022.3154404",
+        "dataset_survey_reference": "Table 4: The list of Deepfake datasets & Figure 7: Distribution of dataset usage in 112 studies",
+        "empirical_benchmark_reference": "Table 9: Deep Learning vs Non-Deep Learning Detection Performance"
+    },
+    "ieee_references": [
+        "Rana et al., 'Deepfake Detection: A Systematic Literature Review', IEEE Access, vol. 10, pp. 25494-25513, 2022. DOI: 10.1109/ACCESS.2022.3154404",
+        "Rossler et al., 'FaceForensics++: Learning to Detect Manipulated Facial Images', ICCV 2019 / IEEE TPAMI 2020",
+        "Li et al., 'Face X-ray for More General Face Forgery Detection', CVPR 2020 / IEEE TPAMI 2021",
+        "Qian et al., 'Thinking in Frequency: Face Forgery Detection by Mining Frequency-aware Clues', ECCV 2020",
+        "Afchar et al., 'MesoNet: a Compact Facial Video Forgery Detection Network', IEEE WIFS 2018"
+    ],
+    "ieee_cataloged_datasets": {
+        "FF": "FaceForensics",
+        "FF++": "FaceForensics++ (★ Primary Video Benchmark)",
+        "DFD": "Deepfake Detection (Google/Jigsaw)",
+        "CELEB-A": "DeepFake Forensics V1",
+        "CELEB-DF": "DeepFake Forensics V2",
+        "DFDC": "Deepfake Detection Challenge",
+        "DF-TIMIT": "Deepfake-TIMIT",
+        "DF-1.0": "DeeperForensics-1.0",
+        "WDF": "Wild Deepfake",
+        "SMFW": "SwapMe and FaceSwap",
+        "DFS": "Deep Fakes (Biological PPG Pulse)",
+        "FFD": "Fake Faces in the Wild",
+        "FE": "FakeET (Eye Tracking)",
+        "FS": "Face Shifter",
+        "DF": "Deepfake",
+        "SFD": "Swapped Face Detection",
+        "UADFV": "Inconsistent Head Poses",
+        "MANFA": "Tampered Face",
+        "Other": "Authors’ Custom Datasets"
+    }
+}

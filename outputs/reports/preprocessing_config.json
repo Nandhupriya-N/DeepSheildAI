@@ -1,0 +1,33 @@
+{
+  "project_name": "DeepShieldAI",
+  "dataset": "CIFAKE",
+  "random_seed": 42,
+  "input_shape": [
+    96,
+    96,
+    3
+  ],
+  "image_size": [
+    96,
+    96
+  ],
+  "batch_size": 16,
+  "validation_split": 0.2,
+  "color_mode": "rgb",
+  "class_mode": "binary",
+  "classes": [
+    "REAL",
+    "FAKE"
+  ],
+  "class_indices": {
+    "REAL": 0,
+    "FAKE": 1
+  },
+  "positive_class": "FAKE",
+  "positive_index": 1,
+  "target_hardware": {
+    "cpu": "Intel Core i3",
+    "ram": "8 GB RAM",
+    "os": "Windows 11"
+  }
+}

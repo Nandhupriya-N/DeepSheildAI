@@ -1,0 +1,69 @@
+# ==============================================================================
+# DeepShieldAI - Git Ignore Configuration
+# ==============================================================================
+
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook Checkpoints & Cache
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+.jupyter/
+
+# Large Datasets
+# CIFAKE dataset (~120k images), do not commit raw images
+datasets/cifake/train/REAL/*
+datasets/cifake/train/FAKE/*
+datasets/cifake/test/REAL/*
+datasets/cifake/test/FAKE/*
+!datasets/cifake/**/.gitkeep
+datasets/*.zip
+datasets/*.tar.gz
+datasets/*.tgz
+
+# Video Deepfake Dataset & Large Feature Arrays
+datasets/video_deepfake/raw/*
+datasets/video_deepfake/processed/*.npy
+!datasets/video_deepfake/**/.gitkeep
+!datasets/video_deepfake/metadata/*.csv
+!datasets/video_deepfake/processed/feature_manifest.json
+
+# Large Trained Models & Weights
+# Keep JSON mappings tracked, but ignore heavy binary model weights
+models/*.keras
+models/*.h5
+models/*.weights.h5
+models/*.pb
+models/variables/
+!models/class_mapping.json
+!models/video_class_mapping.json
+!models/.gitkeep
+
+# Temporary test scripts
+test_*.py
+inspect_*.py
+query_kaggle.py
+find_datasets.py
+download_tf_resumable.py
+create_notebook_*.py
+generate_video_artifacts.py
+search_kaggle_api.py
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,16 @@
+{
+    "backbone": "EfficientNetB0",
+    "weights": "imagenet",
+    "pooling": "avg",
+    "embedding_dim": 1280,
+    "temporal_length": 20,
+    "total_videos": 1500,
+    "train_videos": 1100,
+    "val_videos": 200,
+    "test_videos": 200,
+    "sources": [
+        "FaceForensics++ (C23)",
+        "MultiContext_Scene"
+    ],
+    "updated_at": "2026-11-07T11:06:15Z"
+}

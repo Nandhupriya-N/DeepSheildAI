@@ -1,0 +1,10 @@
+{
+  "REAL": 0,
+  "FAKE": 1,
+  "description": {
+    "0": "REAL (Authentic Image)",
+    "1": "FAKE (AI-Generated / Synthetic Image)"
+  },
+  "positive_class": "FAKE",
+  "positive_index": 1
+}

@@ -1,0 +1,19 @@
+{
+    "Accuracy": 0.945,
+    "Balanced Accuracy": 0.945,
+    "Precision (PPV)": 0.9495,
+    "Recall (Sensitivity)": 0.94,
+    "Specificity (TNR)": 0.95,
+    "F1-Score": 0.9447,
+    "ROC-AUC": 0.9824,
+    "PR-AUC (Avg Precision)": 0.9818,
+    "Brier Score": 0.0435,
+    "True Negatives (Real)": 95,
+    "False Positives (Real as Fake)": 5,
+    "False Negatives (Fake as Real)": 6,
+    "True Positives (Fake)": 94,
+    "Total Test Videos": 200,
+    "Total Training Videos": 1100,
+    "Latency Mean (ms)": 64.28,
+    "Latency P95 (ms)": 78.42
+}

@@ -1,0 +1,12 @@
+metric,value
+Dataset Benchmark Name,CIFAKE (Birdy654 / Kaggle)
+Total Target Training Images,"100,000 (50k REAL, 50k FAKE)"
+Total Target Testing Images,"20,000 (10k REAL, 10k FAKE)"
+Target Total Images,"120,000"
+Target Classes,"2 (REAL, FAKE)"
+Class Ratio (REAL : FAKE),1 : 1 (Perfect 50.0% Balance)
+Native Image Resolution,32 x 32 pixels
+Native Color Mode,RGB (3 channels)
+Audited Valid Images,"10,000"
+Audited Corrupted Images,0
+Audit Status,PASSED

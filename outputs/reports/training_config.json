@@ -1,0 +1,24 @@
+{
+  "sample_mode": true,
+  "sample_train_size": 2000,
+  "sample_val_size": 500,
+  "image_size": [
+    96,
+    96
+  ],
+  "channels": 3,
+  "batch_size": 16,
+  "initial_epochs": 5,
+  "fine_tune_epochs": 5,
+  "initial_learning_rate": 0.001,
+  "fine_tune_learning_rate": 1e-05,
+  "optimizer": "Adam",
+  "loss": "binary_crossentropy",
+  "metrics": [
+    "accuracy"
+  ],
+  "dropout_rate": 0.3,
+  "dense_units": 128,
+  "positive_class": "FAKE (Index 1)",
+  "random_seed": 42
+}
