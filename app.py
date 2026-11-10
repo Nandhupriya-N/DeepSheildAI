@@ -10,7 +10,6 @@ import tempfile
 from pathlib import Path
 from datetime import datetime
 import base64
-
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -183,7 +182,6 @@ def extract_uniform_video_frames(video_path: str, num_frames: int = 20):
     if total_frames <= 0:
         cap.release()
         raise ValueError("Video container reported zero total frames.")
-        
     indices = np.linspace(0, total_frames - 1, num_frames, dtype=int)
     target_set = set(indices)
     max_idx = max(indices)
@@ -309,7 +307,6 @@ def run_video_inference(video_path: str, video_model, feature_extractor):
         "anomaly_trajectory": np.array(anomaly_trajectory),
         "frames": frames
     }
-
 # ==============================================================================
 # Custom CSS Styling & Responsive Forensics Theme
 # ==============================================================================
@@ -587,10 +584,6 @@ with st.sidebar:
 
     st.markdown("---")
     st.caption("DeepShieldAI Forensics Suite • 2026")
-
-# ==============================================================================
-# PAGE 1: IMAGE FORENSICS SCANNER
-# ==============================================================================
 if page == "📸 Image Forensics Scanner":
     st.markdown('<div class="main-title">📸 Image Deepfake Forensic Scanner</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-title">Detect AI-synthesized imagery (Stable Diffusion, Midjourney, GANs) using MobileNetV2 Transfer Learning.</div>', unsafe_allow_html=True)
