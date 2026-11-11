@@ -173,61 +173,50 @@ def compute_multi_spectral_lenses(image: Image.Image):
 def generate_forensic_certificate_html(media_name: str, media_type: str, verdict: str,
                                       confidence: float, risk_tier: str, sha256_hash: str,
                                       latency_ms: float, telemetry: dict) -> str:
-    """Generates an executive forensic verification certificate formatted in HTML."""
+    """Generates an executive forensic verification certificate formatted in clean HTML."""
     cert_id = f"DS-2026-F{sha256_hash[:8].upper()}"
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S UTC")
-    is_fake = "FAKE" in verdict.upper() or "SYNTHETIC" in verdict.upper()
+    is_fake = "FAKE" in verdict.upper() or "SYNTHETIC" in verdict.upper() or "DEEPFAKE" in verdict.upper()
     accent_color = "#EF4444" if is_fake else "#10B981"
-    status_label = "COMPROMISED (SYNTHETIC MANIPULATION)" if is_fake else "VERIFIED AUTHENTIC (GENUINE SENSOR)"
+    status_label = "COMPROMISED (SYNTHETIC MANIPULATION)" if is_fake else "VERIFIED AUTHENTIC (GENUINE CAPTURE)"
     
-    html = f"""
-    <div style="background: linear-gradient(135deg, #0B132B 0%, #111E38 100%); border: 2px solid {accent_color}; border-radius: 14px; padding: 26px; color: #F8FAFC; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; box-shadow: 0 16px 40px rgba(0,0,0,0.6); margin-top: 15px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 14px; margin-bottom: 18px;">
-            <div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 24px;">🛡️</span>
-                    <span style="font-size: 20px; font-weight: 800; letter-spacing: 0.5px; color: #F8FAFC;">DEEPSHIELDAI FORENSIC VERIFICATION CERTIFICATE</span>
-                </div>
-                <div style="font-size: 11px; color: #94A3B8; margin-top: 4px;">NIST SP 800-86 & ISO/IEC 27037 DIGITAL EVIDENCE INTEGRITY AUDIT</div>
-            </div>
-            <div style="text-align: right;">
-                <div style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid #38BDF8; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 11px;">
-                    CERTIFICATE ID: {cert_id}
-                </div>
-                <div style="font-size: 10px; color: #64748B; margin-top: 4px;">{timestamp}</div>
-            </div>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 18px;">
-            <div>
-                <div style="font-size: 12px; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.5px;">Media Subject Under Analysis</div>
-                <div style="font-size: 16px; font-weight: 700; color: #F8FAFC; margin-top: 2px; word-break: break-all;">{media_name} ({media_type})</div>
-                
-                <div style="font-size: 11px; color: #94A3B8; margin-top: 10px; text-transform: uppercase;">Cryptographic SHA-256 Digital Fingerprint</div>
-                <div style="font-family: monospace; font-size: 11px; color: #38BDF8; background: rgba(15, 23, 42, 0.8); padding: 6px 10px; border-radius: 6px; margin-top: 3px; border: 1px solid rgba(255,255,255,0.08);">
-                    {sha256_hash}
-                </div>
-            </div>
-            
-            <div style="background: rgba(15, 23, 42, 0.6); padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
-                <div style="font-size: 11px; color: #94A3B8; text-transform: uppercase;">Forensic Verdict</div>
-                <div style="font-size: 18px; font-weight: 900; color: {accent_color}; margin-top: 4px;">{status_label}</div>
-                <div style="font-size: 12px; color: #E2E8F0; margin-top: 4px;">Confidence: <strong>{confidence:.2f}%</strong></div>
-                <div style="font-size: 11px; color: #64748B;">Risk: {risk_tier}</div>
-            </div>
-        </div>
-        
-        <div style="background: rgba(15, 23, 42, 0.4); border-radius: 8px; padding: 12px; font-size: 11px; color: #94A3B8; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 16px;">
-            <strong>Chain-of-Custody Certification Statement:</strong> This digital media container has undergone neural feature extraction, frequency spectrum decomposition, and spatiotemporal sequence modeling. The examination protocol adheres to zero-data-leakage isolation standards. Verification signature: <span style="font-family: monospace; color: #38BDF8;">DS-VERIFIED-SHA256-{sha256_hash[:16]}</span>.
-        </div>
-        
-        <div style="display: flex; justify-content: space-between; font-size: 10px; color: #64748B; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px;">
-            <span>Engine: DeepShieldAI Dual-Engine Forensics v2.4</span>
-            <span>Inference Latency: {latency_ms:.2f} ms</span>
-            <span>Status: VALIDATED RECORD</span>
-        </div>
-    </div>
-    """
+    # Strictly zero leading spaces on any line to prevent CommonMark from rendering an indented code block
+    html = (
+        f'<div style="background: linear-gradient(135deg, #0B132B 0%, #111E38 100%); border: 2px solid {accent_color}; border-radius: 14px; padding: 22px 26px; color: #F8FAFC; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif; box-shadow: 0 16px 40px rgba(0,0,0,0.6); margin-top: 10px;">'
+        f'<div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 12px; margin-bottom: 16px;">'
+        f'<div>'
+        f'<div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 22px;">🛡️</span><span style="font-size: 18px; font-weight: 800; letter-spacing: 0.5px; color: #F8FAFC;">DEEPSHIELDAI FORENSIC VERIFICATION CERTIFICATE</span></div>'
+        f'<div style="font-size: 11px; color: #94A3B8; margin-top: 3px;">NIST SP 800-86 &amp; ISO/IEC 27037 DIGITAL EVIDENCE INTEGRITY AUDIT</div>'
+        f'</div>'
+        f'<div style="text-align: right;">'
+        f'<div style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border: 1px solid #38BDF8; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 11px;">CERTIFICATE ID: {cert_id}</div>'
+        f'<div style="font-size: 10px; color: #64748B; margin-top: 4px;">{timestamp}</div>'
+        f'</div>'
+        f'</div>'
+        f'<div style="display: flex; gap: 20px; margin-bottom: 16px;">'
+        f'<div style="flex: 2;">'
+        f'<div style="font-size: 11px; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.5px;">Media Subject Under Analysis</div>'
+        f'<div style="font-size: 15px; font-weight: 700; color: #F8FAFC; margin-top: 2px; word-break: break-all;">{media_name} ({media_type})</div>'
+        f'<div style="font-size: 11px; color: #94A3B8; margin-top: 8px; text-transform: uppercase;">Cryptographic SHA-256 Digital Fingerprint</div>'
+        f'<div style="font-family: monospace; font-size: 11px; color: #38BDF8; background: rgba(15, 23, 42, 0.8); padding: 6px 10px; border-radius: 6px; margin-top: 3px; border: 1px solid rgba(255,255,255,0.08);">{sha256_hash}</div>'
+        f'</div>'
+        f'<div style="flex: 1; background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">'
+        f'<div style="font-size: 10px; color: #94A3B8; text-transform: uppercase;">Forensic Verdict</div>'
+        f'<div style="font-size: 16px; font-weight: 900; color: {accent_color}; margin-top: 4px;">{status_label}</div>'
+        f'<div style="font-size: 12px; color: #E2E8F0; margin-top: 3px;">Confidence: <strong>{confidence:.2f}%</strong></div>'
+        f'<div style="font-size: 10px; color: #64748B;">Risk: {risk_tier}</div>'
+        f'</div>'
+        f'</div>'
+        f'<div style="background: rgba(15, 23, 42, 0.4); border-radius: 8px; padding: 10px; font-size: 11px; color: #94A3B8; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 14px;">'
+        f'<strong>Chain-of-Custody Certification Statement:</strong> This digital media container has undergone neural feature extraction, frequency spectrum decomposition, and spatiotemporal sequence modeling. The examination protocol adheres to zero-data-leakage isolation standards. Verification signature: <span style="font-family: monospace; color: #38BDF8;">DS-VERIFIED-SHA256-{sha256_hash[:16]}</span>.'
+        f'</div>'
+        f'<div style="display: flex; justify-content: space-between; font-size: 10px; color: #64748B; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px;">'
+        f'<span>Engine: DeepShieldAI Dual-Engine Forensics v2.4</span>'
+        f'<span>Inference Latency: {latency_ms:.2f} ms</span>'
+        f'<span>Status: VALIDATED RECORD</span>'
+        f'</div>'
+        f'</div>'
+    )
     return html
 
 # ==============================================================================
@@ -424,6 +413,16 @@ st.markdown(f"""
         {bg_rule}
         color: #F8FAFC !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    }}
+    
+    /* Header and Streamlit Top Toolbar Customization */
+    header[data-testid="stHeader"] {{
+        background: rgba(8, 14, 28, 0.88) !important;
+        backdrop-filter: blur(16px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }}
+    header[data-testid="stHeader"] * {{
+        color: #94A3B8 !important;
     }}
     
     /* Top Enterprise Status Ribbon */
